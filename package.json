@@ -1,0 +1,53 @@
+{
+  "name": "xcellent-ui",
+  "version": "1.0.0",
+  "description": "A mordern react ui library",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "build-lib": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daman862kumar/xcellent-ui.git"
+  },
+  "author": "Daman kumar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daman862kumar/xcellent-ui/issues"
+  },
+  "homepage": "https://github.com/daman862kumar/xcellent-ui#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.2",
+    "@babel/plugin-proposal-export-default-from": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@storybook/addon-actions": "^6.4.18",
+    "@storybook/addon-essentials": "^6.4.18",
+    "@storybook/addon-links": "^6.4.18",
+    "@storybook/react": "^6.4.18",
+    "autoprefixer": "^10.0.2",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.6.0",
+    "postcss": "^8.1.7",
+    "postcss-loader": "^4.0.4",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rollup": "^2.67.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "style-loader": "^3.3.1"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "prop-types": "^15.8.1"
+  },
+  "dependencies": {}
+}

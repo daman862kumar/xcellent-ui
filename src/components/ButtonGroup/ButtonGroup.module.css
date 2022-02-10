@@ -1,0 +1,93 @@
+.btn-group-large {
+    --btn-padding: 10px;
+    --btn-font-size: 18px;
+}
+
+.btn-group-extra-large {
+    --btn-padding: 12px;
+    --btn-font-size: 20px;
+}
+
+.btn-group-small {
+    --btn-margin: 8px;
+    --btn-padding: 6px;
+    --btn-font-size: 14px;
+}
+
+.btn-group-extra-small {
+    --btn-margin: 5px;
+    --btn-padding: 3px;
+    --btn-font-size: 13px;
+}
+
+.btn-group > .btn-group:not(:last-child) > button, .btn-group > button:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.btn-group > .btn-group:not(:first-child) > button, .btn-group > button:nth-child(n+3), .btn-group > :not(.btn-check) + button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-group > .btn-group:not(:first-child), .btn-group > button:not(:first-child) {
+    margin-left: -1px;
+}
+
+.btn-group-vertical button, .btn-group-vertical .btn-group {
+    width: 100%;
+}
+
+.btn-group-vertical > button, .btn-group > button {
+    position: relative;
+    -ms-flex: 0 1 auto;
+    -webkit-box-flex: 0;
+    flex: 0 1 auto;
+}
+
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.btn-group-vertical {
+    -ms-flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -ms-flex-align: start;
+    -webkit-box-align: start;
+    align-items: flex-start;
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.btn-group > .btn-group:not(:last-child) > button, .btn-group > button:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.btn-group > .btn-group:not(:first-child) > button, .btn-group > button:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-group-vertical > .btn-group:not(:first-child),
+.btn-group-vertical > button:not(:first-child) {
+    margin-top: -1px
+}
+
+.btn-group-vertical > .btn-group:not(:last-child) > button,
+.btn-group-vertical > button:not(:last-child):not(.dropdown-toggle) {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0
+}
+
+.btn-group-vertical > .btn-group:not(:first-child) > button,
+.btn-group-vertical > button ~ button {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0
+}
