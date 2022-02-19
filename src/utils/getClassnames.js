@@ -5,7 +5,7 @@ const getClassNames=(from,...classes)=>{
         if(v){
             let item=v?.trim()
             let innerClasses=item.split(/\s/g)
-            if(innerClasses.length > 0){
+            if(innerClasses.length > 1){
                 innerClasses.forEach(innerClass=>{
                     let innerItem=innerClass?.trim()
                     if(from[innerItem]){

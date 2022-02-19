@@ -12,6 +12,7 @@
 
 .btn {
     color: #303a52;
+	font-family: 'Nunito Sans', sans-serif;
     font-size: var(--btn-font-size);
     background: var(--btn-main-color);
     padding: var(--btn-padding) calc(var(--btn-padding) * 3);
@@ -85,25 +86,31 @@ span.ripple {
 }
 
 .btn-primary:not(.btn-disabled,disabled,.btn-loading,.btn-loading-grow,.btn-outline):hover {
-    background: #2a47db;
+    background: var(--primary-hover);
 }
 
 .btn-dark:not(.btn-disabled,disabled,.btn-loading,.btn-loading-grow,.btn-outline):hover {
-    background: #000;
+    background: var(--dark-hover);
 }
 
 .btn-light:not(.btn-disabled,disabled,.btn-loading,.btn-loading-grow,.btn-outline):hover {
-    background: #f7f6f6;
+    background: var(--light-hover);
 }
 
 .btn-disabled:focus, .btn[disabled]:focus, .btn-text:focus {
     box-shadow: none !important;
 }
 
-.btn-primary:not(.btn-disabled,disabled,.btn-text):focus {
-    box-shadow: 0 0 0 calc(var(--btn-margin) - 8px) #d6e0ff;
-}
 
+.btn:not(.btn-disabled,disabled,.btn-text):focus {
+    box-shadow: 0 0 0 calc(var(--btn-margin) - 8px) var(--hover-box-shadow);
+}
+.btn-light:not(.btn-disabled,disabled,.btn-text):focus {
+    box-shadow: 0 0 0 calc(var(--btn-margin) - 8px) var(--light-hover-box-shadow);
+}
+.btn-primary:not(.btn-disabled,disabled,.btn-text):focus {
+    box-shadow: 0 0 0 calc(var(--btn-margin) - 8px) var(--primary-hover-box-shadow);
+}
 .btn[disabled], .btn-disabled {
     --btn-cursor: not-allowed;
     opacity: .8;
@@ -255,6 +262,7 @@ span.ripple {
     display: inline-block;
 }
 
+
 .btn-loading {
     --btn-cursor: default;
     opacity: .9;
@@ -317,7 +325,10 @@ span.ripple {
     padding-left: var(--btn-padding);
     padding-right: calc(var(--btn-font-size) * 1.5 + var(--btn-padding));
 }
-
+.btn-loading-no-text{
+    padding-left: calc(var(--btn-padding)*3);
+    padding-right: calc(var(--btn-padding)*3);
+}
 @media (min-width: 576px) {
     .btn-sm-large {
         --btn-padding: 10px;

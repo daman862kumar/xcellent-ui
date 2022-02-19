@@ -11,7 +11,6 @@ const ButtonGroup = ({children, size,direction}) => {
         xl: 'extra-large',
     }
     let sizeClasses = size !== "md" ? `btn-group-${sizes[size]}` : ''
-    console.log("sizeClasses",sizeClasses)
     let directionClasses = direction  !== "horizontal" ? `btn-group-${direction}` : 'btn-group'
     return (
         <div className={getClassNames(styles, sizeClasses,directionClasses)}>

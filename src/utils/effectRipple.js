@@ -2,6 +2,14 @@ import rgbaToHsla from "./colors/rgbToHSL";
 
 function ripple(e,button,focus,initial,mouseDown) {
     e.stopPropagation()
+    let timeHandler=() => {
+        try {
+            button.style=initial
+            button.removeChild(ripple_elmnt);
+            mouseDown=false
+        } catch(er) {}
+    };
+    clearTimeout(timeHandler)
     button.style.overflow="hidden"
     const style = getComputedStyle(button);
     let backgroundColor=style['backgroundColor']||""
@@ -44,23 +52,11 @@ function ripple(e,button,focus,initial,mouseDown) {
 
     button.addEventListener("mouseup", e => {
         ripple_elmnt.style.opacity = 0;
-        setTimeout(() => {
-            try {
-                button.style=initial
-                button.removeChild(ripple_elmnt);
-                mouseDown=false
-            } catch(er) {}
-        }, 400);
+        setTimeout(timeHandler)
     }, {once: true});
     button.addEventListener("blur", e => {
         ripple_elmnt.style.opacity = 0;
-        setTimeout(() => {
-            try {
-                button.style=initial
-                button.removeChild(ripple_elmnt);
-                mouseDown=false
-            } catch(er) {}
-        }, 450);
+        setTimeout(timeHandler)
     }, {once: true});
 }
 

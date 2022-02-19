@@ -1,0 +1,270 @@
+:root{
+    --alert-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    --alert-box-shadow-hover: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    --alert-border-radius: 5px;
+    --alert-font-size: 16px;
+    --alert-margin: 15px;
+    --alert-cursor: pointer;
+    --alert-outline-width:2px;
+    --alert-padding:15px;
+    --alert-main-bg:#f8f8f8;
+}
+
+.alert {
+    padding: var(--alert-padding) calc(calc(var(--alert-padding) + 3px) + calc(var(--alert-font-size) + 9px)) var(--alert-padding) calc(var(--alert-padding) + 3px);
+    border-radius: var(--alert-border-radius);
+    -webkit-box-shadow: var(--alert-box-shadow);
+    box-shadow: var(--alert-box-shadow);
+    background: #efefef;
+	margin: 0 0 var(--alert-font-size);
+	position: relative;
+    z-index: 9;
+    font-size: var(--alert-font-size);
+	font-family: 'Nunito Sans',sans-serif;
+    border: var(--alert-outline-width) solid none;
+}
+.alert:hover {
+    -moz-box-shadow: var(--alert-box-shadow-hover);
+    -webkit-box-shadow: var(--alert-box-shadow-hover);
+    box-shadow: var(--alert-box-shadow-hover);
+}
+.alert-rounded{
+    --alert-border-radius: 10px;
+}
+.alert-no-radius{
+    --alert-border-radius: 0px;
+}
+.alert-pill{
+    --alert-border-radius: 50px;
+}
+.alert-heading {
+    color: inherit;
+}
+.alert .close {
+    position: absolute;
+    border: none;
+    background: no-repeat;
+    color: inherit;
+    font-size: var(--alert-font-size);
+    font-weight: 700;
+    line-height: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack:center;
+    -ms-flex-pack:center;
+    justify-content:center;
+    cursor: pointer;
+    outline: none;
+    width: calc(var(--alert-font-size) + 9px);
+    height: calc(var(--alert-font-size) + 9px);
+    border-radius: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: var(--alert-margin);
+}
+.alert .close:hover{
+    background: rgba(255, 255, 255, 0.20);
+    -webkit-box-shadow: 0 0 32px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 32px rgba(0, 0, 0, 0.08);
+}
+.alert *:last-child {
+    margin-bottom: 0;
+}
+.alert p{
+    margin-bottom: 0;
+}
+.alert a {
+    color: inherit;
+	font-weight: bold;
+    text-decoration: underline;
+}
+.alert hr {
+    background: rgba(0, 0, 0,0.14);
+}
+
+/*Color*/
+.alert-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.alert-light {
+    background: var(--light);
+    color: #303a52;
+}
+
+.alert-dark {
+    background: var(--dark);
+    color: white;
+}
+
+.alert-outline{
+    border: var(--alert-outline-width) solid transparent;
+}
+.alert-outline.alert-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    background: white;
+}
+
+.alert-outline.alert-light {
+    color: var(--light-color);
+    border-color: var(--light-color);
+    background: var(--dark);
+}
+.alert-outline.alert-dark {
+    color: var(--dark-color) ;
+    border-color: var(--dark-color) ;
+    background: var(--light);
+}
+.alert-note {
+    background: var(--alert-main-bg) !important;
+    box-shadow: none;
+    border: none !important;
+    border-left: calc(var(--alert-outline-width) + 1px) solid !important;
+}
+.alert-note-top {
+    border: none !important;
+    border-top: calc(var(--alert-outline-width) + 1px) solid !important;
+}
+.alert-note-right {
+    border: none !important;
+    border-right: calc(var(--alert-outline-width) + 1px) solid !important;
+}
+.alert-note-bottom {
+    border: none !important;
+    border-bottom: calc(var(--alert-outline-width) + 1px) solid !important;
+}
+.alert-text,.alert-text:hover{
+	border: none;
+	box-shadow: none;
+}
+@media screen and (max-width: 500px) {
+    .alert{
+        --alert-padding: 10px;
+        --alert-font-size: 14px;
+    }
+}
+/*Sizing*/
+
+.alert-large {
+    --alert-padding: 20px;
+    --alert-font-size: 18px;
+}
+
+.alert-extra-large {
+    --alert-padding: 30px;
+    --alert-font-size: 20px;
+}
+
+.alert-small {
+    --alert-margin: 8px;
+    --alert-padding: 10px;
+    --alert-font-size: 14px;
+}
+
+.alert-extra-small {
+    --alert-margin: 5px;
+    --alert-padding: 5px;
+    --alert-font-size: 13px;
+}
+
+@media (min-width: 576px) {
+    .alert-sm-large {
+        --alert-padding: 20px;
+        --alert-font-size: 18px;
+    }
+
+    .alert-sm-extra-large {
+        --alert-padding: 35px;
+        --alert-font-size: 20px;
+    }
+
+    .alert-sm-small {
+        --alert-margin: 8px;
+        --alert-padding: 10px;
+        --alert-font-size: 14px;
+    }
+
+    .alerts-sm-extra-small {
+        --alert-margin: 5px;
+        --alert-padding: 5px;
+        --alert-font-size: 13px;
+    }
+}
+
+@media (min-width: 768px) {
+    .alert-md-large {
+        --alert-padding: 20px;
+        --alert-font-size: 18px;
+    }
+
+    .alert-md-extra-large {
+        --alert-padding: 35px;
+        --alert-font-size: 20px;
+    }
+
+    .alert-md-small {
+        --alert-margin: 8px;
+        --alert-padding: 10px;
+        --alert-font-size: 14px;
+    }
+
+    .alert-md-extra-small {
+        --alert-margin: 5px;
+        --alert-padding: 5px;
+        --alert-font-size: 13px;
+    }
+}
+
+@media (min-width: 992px) {
+    .alert-lg-large {
+        --alert-padding: 20px;
+        --alert-font-size: 18px;
+    }
+
+    .alert-lg-extra-large {
+        --alert-padding: 35px;
+        --alert-font-size: 20px;
+    }
+
+    .alert-lg-small {
+        --alert-margin: 8px;
+        --alert-padding: 10px;
+        --alert-font-size: 14px;
+    }
+
+    .alert-lg-extra-small {
+        --alert-margin: 5px;
+        --alert-padding: 5px;
+        --alert-font-size: 13px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .alert-xl-large {
+        --alert-padding: 20px;
+        --alert-font-size: 18px;
+    }
+
+    .alert-xl-extra-large {
+        --alert-padding: 35px;
+        --alert-font-size: 20px;
+    }
+
+    .alert-xl-small {
+        --alert-margin: 8px;
+        --alert-padding: 10px;
+        --alert-font-size: 14px;
+    }
+
+    .alert-xl-extra-small {
+        --alert-margin: 5px;
+        --alert-padding: 5px;
+        --alert-font-size: 13px;
+    }
+}
