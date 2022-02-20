@@ -1,0 +1,47 @@
+.typography{
+	color: #303a52;
+	font-family: Nunito Sans,sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,Liberation Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	display: block;
+	margin: 0 0 1rem;
+}
+.typography-subtitle{
+	font-family: 'Segoe UI',sans-serif;
+	color: #1a2027;
+	letter-spacing: 0.00938em;
+}
+.typography-description{
+	font-family: 'Segoe UI',sans-serif;
+	color: #606060;
+	font-size: 0.9rem;
+	letter-spacing: 0.00938em;
+}
+.typography-code{
+	word-wrap: break-word;
+	color: #d63384;
+	font-size: .875em;
+	direction: ltr;
+	font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+	unicode-bidi: bidi-override;
+}
+.typography-subheading{
+	font-family: 'Segoe UI',sans-serif;
+	color: #303a52;
+	font-weight: bold;
+}
+.typography-caption{
+	font-family: 'Segoe UI',sans-serif;
+	font-weight: 400;
+	font-size: 0.75rem;
+	line-height: 1.66;
+	color: #1a2027;
+	letter-spacing: 0.03333em;
+}
+.typography-light{
+	font-weight: 300;
+}
+.typography-bold{
+	font-weight: 600;
+}
