@@ -2,6 +2,7 @@ import React from 'react';
 import {oneOf} from 'prop-types';
 import styles from './ButtonGroup.module.css';
 import getClassNames from "../../utils/getClassnames";
+import sizeClasses from "../../utils/sizeClasses";
 
 const ButtonGroup = ({children, size,direction}) => {
     let sizes = {
@@ -10,10 +11,10 @@ const ButtonGroup = ({children, size,direction}) => {
         lg: 'large',
         xl: 'extra-large',
     }
-    let sizeClasses = size !== "md" ? `btn-group-${sizes[size]}` : ''
+    let sizeClass = sizeClasses('btn-group',size)
     let directionClasses = direction  !== "horizontal" ? `btn-group-${direction}` : 'btn-group'
     return (
-        <div className={getClassNames(styles, sizeClasses,directionClasses)}>
+        <div className={getClassNames(styles, sizeClass,directionClasses)}>
             {children}
         </div>
     );

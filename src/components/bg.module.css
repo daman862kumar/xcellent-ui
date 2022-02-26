@@ -1,0 +1,19 @@
+.bg-primary {
+	background: var(--primary) !important;
+	color: white !important;
+}
+.bg-primary::before {
+	border-color: white !important;
+}
+.bg-light {
+	background: var(--light) !important;
+	color: #303a52 !important;
+}
+
+.bg-dark {
+	background: var(--dark) !important;
+	color: white !important;
+}
+.bg-dark::before {
+	border-color: white !important;
+}

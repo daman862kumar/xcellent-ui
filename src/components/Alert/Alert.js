@@ -5,6 +5,7 @@ import styles from "./Alert.module.css";
 import uuid from "../../utils/uuid";
 import colorShades from "../../utils/colors/colorShades";
 import covertColor from "../../utils/colors/convertColor";
+import sizeClasses from "../../utils/sizeClasses";
 
 const Alert = ({children, direction, dismiss, size, theme, colorScheme, className, style, variant, layout, onClose, ...rest}) => {
 	let themeClasses = `alert-${theme}`
@@ -20,13 +21,7 @@ const Alert = ({children, direction, dismiss, size, theme, colorScheme, classNam
 		variantClasses = variant !== 'default' ? `alert-${variant} ${direction && direction !== 'left' && `alert-note-${direction}`} ${variant === "note" && 'alert-outline'} ${variant === 'text' && 'alert-outline'}` : ''
 	}
 	
-	let sizes = {
-		xs: 'extra-small',
-		sm: 'small',
-		lg: 'large',
-		xl: 'extra-large',
-	}
-	let sizeClasses = size !== "md" ? `alert-${sizes[size]}` : ''
+	let sizeClass = sizeClasses('alert',size)
 	let mainBtnSelector = getClassNames(styles, 'alert')
 	
 	if (colorScheme) {
@@ -58,7 +53,6 @@ const Alert = ({children, direction, dismiss, size, theme, colorScheme, classNam
 		}
 		setShow(false)
 	}
-	console.log("className", className)
 	return show ? (
 		<div
 			className={
@@ -67,7 +61,7 @@ const Alert = ({children, direction, dismiss, size, theme, colorScheme, classNam
 					!colorScheme ? themeClasses : 'alert-primary',
 					layoutClasses,
 					variantClasses,
-					sizeClasses
+					sizeClass
 				)} ${className}`
 			}
 			{...rest}

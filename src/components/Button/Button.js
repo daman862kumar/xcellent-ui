@@ -1,12 +1,13 @@
 import React from 'react';
-import {arrayOf, bool, object, oneOf, shape, string} from 'prop-types';
+import {arrayOf, bool, checkPropTypes, object, oneOf, shape, string} from 'prop-types';
 import styles from './Button.module.css';
 import getClassNames from "../../utils/getClassnames";
 import ripple from "../../utils/effectRipple";
 import uuid from "../../utils/uuid";
 import colorShades from "../../utils/colors/colorShades";
 import covertColor from "../../utils/colors/convertColor"
-
+import sizeClasses from "../../utils/sizeClasses";
+/*Responsive checkPropTypes pending for onstalled components*/
 const Button = ({className, style, hideTextOnLoading, children, type, colorScheme, theme, variant, layout, disabled, loading, loadingDirection, loadingStyle, size, prefix, suffix, ...rest}) => {
 	let themeClasses = `btn-${theme}`
 	let mouseDown = false
@@ -20,14 +21,9 @@ const Button = ({className, style, hideTextOnLoading, children, type, colorSchem
 	if (variantArray.includes(variant)) {
 		variantClasses = variant !== 'default' ? `btn-${variant} ${variant === 'text' && 'btn-outline'}` : ''
 	}
-	let sizes = {
-		xs: 'extra-small',
-		sm: 'small',
-		lg: 'large',
-		xl: 'extra-large',
-	}
+	
 	let loadingClasses = loading && `${hideTextOnLoading && 'btn-loading-no-text'} btn-loading ${loadingDirection === "after" && 'btn-loading-right'} ${loadingStyle === 'grow' && 'btn-loading-grow'}`
-	let sizeClasses = size !== "md" ? `btn-${sizes[size]}` : ''
+	let sizeClass =  sizeClasses('btn',size)
 	let mainBtnSelector = getClassNames(styles, 'btn')
 	
 	if (colorScheme) {
@@ -65,7 +61,7 @@ const Button = ({className, style, hideTextOnLoading, children, type, colorSchem
 				disabled ? 'btn-disabled' : '',
 				loadingClasses,
 				variantClasses,
-				sizeClasses
+				sizeClass
 			)} ${className}`
 		}
 		onMouseDown={(e) => {
