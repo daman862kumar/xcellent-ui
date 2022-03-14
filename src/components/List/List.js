@@ -19,7 +19,7 @@ const List = ({children, theme, layout, variant,direction,size}) => {
 	let sizeClass = sizeClasses('list',size)
 	const childrenWithProps = React.Children.map(children, child => {
 		if (React.isValidElement(child)) {
-			return React.cloneElement(child, {theme});
+			return React.cloneElement(child, {theme,...child.props});
 		}
 		return child;
 	});

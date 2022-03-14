@@ -19,7 +19,7 @@ const Accordion = ({children, theme, variant, size, layout, indicatorDirection})
 	let sizeClass = sizeClasses('accordion', size)
 	const childrenWithProps = React.Children.map(children, child => {
 		if (React.isValidElement(child)) {
-			return React.cloneElement(child, {theme});
+			return React.cloneElement(child, {theme,...child.props});
 		}
 		return child;
 	});

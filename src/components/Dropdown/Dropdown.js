@@ -1,94 +1,103 @@
-import React,{useState} from 'react';
-import {array, bool, oneOf, string,object} from 'prop-types';
+import React, {useState} from 'react';
+import {array, bool, oneOf, string, object} from 'prop-types';
 import sizeClasses from "../../utils/sizeClasses";
 import classes from './Dropdown.module.css'
 import getClassNames from "../../utils/getClassnames";
-const Dropdown = ({position, options, style, className, styles, size}) => {
+
+const Dropdown = ({autoClose, children, className, style, size, position, fullwidth, layout, variant}) => {
 	let [open, setOpen] = useState(false)
-	let [searchValue, setSearchValue] = useState("")
-	let [optionsArray, setArrayOptions] = useState(options)
-	let [optionsFilterArray, setOptionsFilterArray] = useState(options)
-	let [selected, setSelected] = useState(options[0] ? options[0] : null)
-	let sizeClassNames = sizeClasses('dropdown',size)
+	let sizeClassNames = sizeClasses('dropdown', size)
+	let layoutArray = ['rounded', 'default', 'no-radius', 'floating']
+	let variantArray = ['drawer', 'fluid',]
+	let layoutClasses = ""
+	if (layoutArray.includes(layout)) {
+		layoutClasses = layout !== 'default' ? `dropdown-${layout}` : ''
+	}
+	let variantClasses = ''
+	if (variantArray.includes(variant)) {
+		variantClasses = variant !== 'default' ? `dropdown-${variant}` : ''
+	}
+	
+	let sizeClass =  sizeClasses('dropdown',size)
 	let openDropdown = () => {
 		setOpen(!open)
 	}
 	
-	let selectCode = (index) => {
-		if (options[index]) {
-			setSelected(optionsFilterArray[index])
+	let handleCloseMenu = (e) => {
+		if (e.currentTarget === e.target) {
 			setOpen(false)
 		}
 	}
+	const childrenWithProps = React.Children.map(children, child => {
+		if (React.isValidElement(child)) {
+			return React.cloneElement(child, {
+				autoClose, toggleHandler: openDropdown, closeHandler: () => {
+					setOpen(false)
+				}
+			});
+		}
+		return child;
+	});
 	
-	let searchHandler = (e) => {
-		let value = e?.target?.value?.trim()
-		setSearchValue(value)
-		let optionsArrayTemp = optionsArray?.filter(v => {
-			let optionValue = v?.value
-			return optionValue.includes(value)
-		})
-		setOptionsFilterArray(optionsArrayTemp)
-	}
 	return (
-		<div style={styles}
-			 className={getClassNames(classes, 'dropdown dropdown-fluid dropdown-full', sizeClassNames)}>
-			<button style={style} onClick={openDropdown} type="button"
-					className={`
-                   
-                    ${getClassNames(classes, 'dropdown-toggle', open ? 'dropdown-open' : '')}
-                    ${className}
-                    `}
-					data-toggle="dropdown">
-				{selected?.value}
-			</button>
-			<div
-				className={getClassNames(classes, "dropdown-menu", position === "after" ? 'dropdown-menu-right' : '')}
-				style={{minWidth: "110px"}}>
-				<input type="text" style={{marginBottom: '5px'}} value={searchValue}
-					onChange={searchHandler}/>
-				<div className={getClassNames(classes, "dropdown-wrap")}>
-					{optionsFilterArray?.map((v, i) => {
-						if (v?.toString()?.trim()) {
-							let value = v?.value
-							return <a onClick={() => {
-								selectCode(i)
-							}} key={i} className={`${getClassNames(classes, "dropdown-item")}`} href="#">
-								{value}
-							</a>
-						}
-					})}
-				</div>
-			
-			</div>
+		<div style={style}
+			 onClick={(e) => {
+				 handleCloseMenu(e)
+			 }}
+			 className={`${getClassNames(
+				 classes,
+				 'dropdown', open ? 'dropdown-open' : '',
+				 sizeClassNames,
+				 fullwidth && 'dropdown-full',
+				 position !== 'bottom' && `drop-${position}`,
+				 layoutClasses,
+				 variantClasses,
+				 sizeClass
+			 )} ${className}`}>
+			{childrenWithProps}
 		</div>
 	);
 };
 
 Dropdown.propTypes = {
 	style: object,
-	styles: object,
 	className: string,
 	multiple: bool,
+	autoClose: bool,
+	fullwidth: bool,
 	variants: array,
 	name: string.isRequired,
+	position: oneOf(['bottom', 'top', 'right', 'left']),
+	layout: oneOf(['rounded', 'default', 'no-radius', 'floating']),
 	size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
-	variant: oneOf(['rounded', 'pill', 'no-radius', 'cover', 'floating', 'outline', 'fill', 'fill-with-border', 'underline', '']),
+	variant: oneOf(['drawer', 'fluid',]),
 	disabled: bool,
 	value: string,
 	placeholder: string,
 	defaultValue: string,
 	id: string,
+	menuClass: string,
+	menuStyle: object,
+	dropdownButtonStyle: object,
+	dropdownButtonClassName: string
+	
 };
 Dropdown.defaultProps = {
 	style: {},
-	styles: {},
-	className: "",
+	menuClass: "",
+	menuStyle: {},
+	position: 'bottom',
+	autoClose: false,
+	className: '',
+	dropdownButtonStyle: {},
+	fullwidth: false,
+	dropdownButtonClassName: "",
 	multiple: false,
 	variants: [],
-	name: "",
+	name: '',
 	size: "md",
-	variant: "",
+	variant: "default",
+	layout: 'default',
 	disabled: false,
 	value: "",
 	placeholder: "",

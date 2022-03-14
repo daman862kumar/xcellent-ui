@@ -9,6 +9,7 @@
 	--dropdown-max-height: 200px;
 	--dropdown-outline-width: 2px;
 	--dropdown-cursor: pointer;
+	--dropdown-bg:#efefef;
 }
 .dropdown {
 	position: relative;
@@ -18,7 +19,31 @@
 	overflow: auto;
 	max-height: var(--dropdown-max-height);
 }
-.dropdown-open ~ .dropdown-menu{
+.dropdown.dropdown-open:before {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: transparent;
+	content: "";
+}
+.dropdown-btn{
+	background: #f4f4f4;
+	border: none;
+	position: relative;
+	padding: var(--dropdown-padding);
+	border-radius: var(--dropdown-border-radius);
+}
+.dropdown-search-input{
+	border: var(--dropdown-outline-width) solid var(--dropdown-bg);
+	padding: var(--dropdown-padding);
+	border-radius: var(--dropdown-border-radius);
+	width: calc(100% - var(--dropdown-margin));
+	margin: 0 auto var(--dropdown-margin);
+	display: block;
+}
+.dropdown-open .dropdown-menu{
 	transform: scale(1);
 	opacity: 1;
 	visibility: visible;
@@ -75,7 +100,7 @@
 	-webkit-box-shadow: var(--dropdown-box-shadow);
 	box-shadow: var(--dropdown-box-shadow);
 	padding: var(--dropdown-side-padding);
-	z-index: 9999;
+	z-index: 999999;
 	top: calc(100% + 10px);
 	height: auto;
 	visibility: hidden;
@@ -99,7 +124,7 @@
 	left: 20px;
 }
 
-.dropdown-no-arrow .dropdown-menu:before{
+.dropdown-floating .dropdown-menu:before{
 	display: none;
 }
 
@@ -125,6 +150,7 @@
 
 .dropdown-item:hover {
 	background: #f4f4f4;
+	cursor:pointer;
 }
 
 .dropdown-item {
@@ -278,24 +304,24 @@
 }
 
 
-.drop-up .dropdown-menu {
+.drop-top .dropdown-menu {
 	bottom: calc(100% + 10px);
 	top: unset;
 	transform-origin: bottom left;
 }
 
-.drop-up .dropdown-menu.dropdown-menu-right {
+.drop-top .dropdown-menu.dropdown-menu-right {
 	transform-origin: bottom right;
 }
 
-.drop-up .dropdown-menu:before {
+.drop-top .dropdown-menu:before {
 	top: unset;
 	left: 20px;
 	bottom: -14px;
 	border-color: white transparent transparent transparent;
 }
 
-.drop-up .dropdown-menu.dropdown-menu-right:before {
+.drop-top .dropdown-menu.dropdown-menu-right:before {
 	left: unset;
 }
 
@@ -305,11 +331,11 @@
 	color: #303a52;
 }
 
-.dropdown-drawer.drop-up .dropdown-toggle {
+.dropdown-drawer.drop-top .dropdown-toggle {
 	border-radius: 0 0 var(--dropdown-border-radius) var(--dropdown-border-radius);
 }
 
-.dropdown-drawer.drop-up .dropdown-menu {
+.dropdown-drawer.drop-top .dropdown-menu {
 	border-radius: var(--dropdown-border-radius) var(--dropdown-border-radius) 0 0;
 	bottom: 100%;
 }
